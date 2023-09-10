@@ -1,0 +1,15 @@
+$width: 20em;
+$height: 20em;
+
+.wrap {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    div {
+        width: $width;
+        height: $height;
+        border: 2px solid gray;
+        margin: 40px auto;
+    }
+
+}
