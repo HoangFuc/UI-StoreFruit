@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './home/Home';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProductDetail from './Product/ProductDetail';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
           <Routes>
             <Route path="/" Component={Login} ></Route>
             <Route path="/home" Component={Home}></Route>
+            {/* <Route path='/productdetail' Component={ProductDetail} exact /> */}
+            <Route path='/productdetail/:id/:name/:price/:code/:status' Component={ProductDetail} />
           </Routes>
           <ToastContainer
             position="top-right"

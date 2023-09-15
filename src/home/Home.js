@@ -22,6 +22,7 @@ class Home extends React.Component {
                 <div className="topnav">
                     <Nav />
                 </div>
+                <h1>Products</h1>
                 <div className="body">
                     <ListProduct listProduct={this.state.listProduct} />
                 </div>
