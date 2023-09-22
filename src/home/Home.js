@@ -3,6 +3,7 @@ import Nav from "../Nav/Nav";
 import "./Home.scss";
 import axios from "axios";
 import ListProduct from "../ListProducts/ListProduct";
+import withRouter from "../withRouter";
 
 class Home extends React.Component {
     state = {
@@ -17,10 +18,11 @@ class Home extends React.Component {
 
     }
     render() {
+        let validate = this.props.router.params;
         return (
             <>
                 <div className="topnav">
-                    <Nav />
+                    <Nav validate={validate} />
                 </div>
                 <h1>Products</h1>
                 <div className="body">
@@ -32,4 +34,4 @@ class Home extends React.Component {
 }
 
 
-export default Home;
+export default withRouter(Home);

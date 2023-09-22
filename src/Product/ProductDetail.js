@@ -1,29 +1,9 @@
 import React from "react";
-import {
-    useLocation,
-    useNavigate,
-    useParams,
-} from "react-router-dom";
 import Nav from "../Nav/Nav";
 import '../Nav/Nav.scss'
 import './ProductDetail.scss'
 import { toast } from 'react-toastify';
-// cau hinh withRouter de get params id
-function withRouter(Component) {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-            <Component
-                {...props}
-                router={{ location, navigate, params }}
-            />
-        );
-    }
-
-    return ComponentWithRouterProp;
-}
+import withRouter from "../withRouter";
 
 class ProductDetail extends React.Component {
     state = {

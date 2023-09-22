@@ -49,7 +49,7 @@ class Login extends React.Component {
                     <input type='text' placeholder='Nhap ten tai khoan' onChange={(event) => this.handleInputUserName(event)}></input> <br />
                     <input type='password' placeholder='Nhap mat khau' onChange={(event) => this.handleInputPassword(event)}></input> <br />
                     <button type='button' className="validatebutton" onClick={() => this.validateAccount()}>Dang Nhap</button>
-                    {validate && (< Navigate to="/home" />)}
+                    {validate && (< Navigate to="/home/true" validate={this.state.validate} />)}
                 </div >
             </>
         )

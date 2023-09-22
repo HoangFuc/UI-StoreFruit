@@ -13,8 +13,10 @@ function App() {
       <header className="App-header">
         <BrowserRouter>
           <Routes>
-            <Route path="/" Component={Login} ></Route>
-            <Route path="/home" Component={Home}></Route>
+            <Route path="/login" Component={Login} ></Route>
+            <Route path="/" Component={Home}></Route>
+            <Route path="/home" Component={Home} exact></Route>
+            <Route path="/home/:validate" Component={Home}></Route>
             {/* <Route path='/productdetail' Component={ProductDetail} exact /> */}
             <Route path='/productdetail/:id/:name/:price/:code/:status' Component={ProductDetail} />
           </Routes>
