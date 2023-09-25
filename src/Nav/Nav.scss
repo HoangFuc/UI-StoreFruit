@@ -28,4 +28,27 @@
 
 #login {
     float: right;
+
+    img {
+        width: 48px;
+        border-radius: 50%;
+        border: 1px solid black;
+        text-align: center;
+        margin-top: 3px;
+        margin-right: 10px;
+    }
+
+    #setup {
+        position: relative;
+    }
+
+    .pic {
+        list-style: none;
+    }
+
+    .subnav {
+        position: absolute;
+        list-style: none;
+        display: inline-block;
+    }
 }
