@@ -12,7 +12,6 @@ class ListProduct extends React.Component {
                         listProduct.map((item, index) => {
                             return (
                                 <>
-                                    {console.log("check ", item)}
                                     <div className="listproduct" key={item.id}>
                                         <Product product={item} />
                                     </div>

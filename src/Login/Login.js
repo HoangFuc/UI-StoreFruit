@@ -3,14 +3,14 @@ import logo from './logo.jpg'
 import "./Login.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+
+
 
 class Login extends React.Component {
     state = {
         username: '',
-        password: '',
-        validate: false
+        password: ''
     }
     handleInputUserName = (event) => {
         this.setState({
@@ -30,9 +30,7 @@ class Login extends React.Component {
             password: this.state.password
         })
             .then((data) => {
-                this.setState({
-                    validate: true
-                })
+                window.location.href = '/home';
             }
             )
             .catch((err) => {
@@ -41,15 +39,13 @@ class Login extends React.Component {
     }
 
     render() {
-        let { validate } = this.state;
         return (
             <>
                 <img src={logo} alt="Logo" />
                 <div className='login'>
                     <input type='text' placeholder='Nhap ten tai khoan' onChange={(event) => this.handleInputUserName(event)}></input> <br />
                     <input type='password' placeholder='Nhap mat khau' onChange={(event) => this.handleInputPassword(event)}></input> <br />
-                    <button type='button' className="validatebutton" onClick={() => this.validateAccount()}>Dang Nhap</button>
-                    {validate && (< Navigate to="/home/true" validate={this.state.validate} />)}
+                    <button type='button' className="validatebutton" onClick={() => this.validateAccount()}>Login</button>
                 </div >
             </>
         )
