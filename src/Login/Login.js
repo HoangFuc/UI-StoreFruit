@@ -31,6 +31,7 @@ class Login extends React.Component {
         })
             .then((data) => {
                 window.location.href = '/home';
+                localStorage.setItem('name', `${this.state.username}`)
             }
             )
             .catch((err) => {
@@ -41,6 +42,7 @@ class Login extends React.Component {
     render() {
         return (
             <>
+                {localStorage.removeItem('name')}
                 <img src={logo} alt="Logo" />
                 <div className='login'>
                     <input type='text' placeholder='Nhap ten tai khoan' onChange={(event) => this.handleInputUserName(event)}></input> <br />

@@ -52,3 +52,30 @@
         display: inline-block;
     }
 }
+
+.dropDownProfile {
+    position: absolute;
+    top: 3.5rem;
+    right: 1rem;
+    width: 150px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid gray;
+
+    .choise {
+        list-style: none;
+        padding-left: 0px;
+
+        li {
+            margin-right: 20px;
+            margin-bottom: 10px;
+
+            a {
+                color: black;
+                width: 100%;
+            }
+        }
+    }
+}

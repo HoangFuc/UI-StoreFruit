@@ -7,7 +7,8 @@ import withRouter from "../withRouter";
 
 class Home extends React.Component {
     state = {
-        listProduct: []
+        listProduct: [],
+        check: localStorage.getItem('name')
     }
 
     async componentDidMount() {
@@ -19,19 +20,29 @@ class Home extends React.Component {
     }
     render() {
         let validate = this.props.router.params;
-        return (
-            <>
-                <div className="topnav">
-                    <Nav validate={validate} />
-                </div>
-                <h1>Products</h1>
-                <div className="body">
-                    <ListProduct listProduct={this.state.listProduct} />
-                </div>
-            </>
-        )
+        if (this.state.check !== null)
+            return (
+                <>
+                    {sessionStorage.getItem
+                        ?
+                        <>
+                            <div className="topnav">
+                                <Nav validate={validate} />
+                            </div>
+                            <h1>Products</h1>
+                            <div className="body">
+                                <ListProduct listProduct={this.state.listProduct} />
+                            </div>
+                        </>
+                        :
+                        window.location.href = '/'
+                    }
+                </>
+            )
+        else window.location.href = '/'
     }
 }
 
 
 export default withRouter(Home);
+
