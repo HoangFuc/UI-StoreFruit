@@ -2,8 +2,8 @@ import React from "react";
 import Nav from "../Nav/Nav";
 import '../Nav/Nav.scss'
 import './ProductDetail.scss'
-import { toast } from 'react-toastify';
 import withRouter from "../withRouter";
+import { ADD_PRODUCT } from "../store/reducers/cart";
 
 class ProductDetail extends React.Component {
     state = {
@@ -28,15 +28,12 @@ class ProductDetail extends React.Component {
         })
     }
 
-    handleAddCart = () => {
-        toast.success("Nice")
-    }
-
     render() {
-        const { id, name, price, code, status } = this.props.router.params;
+        const { name, price, status } = this.props.router.params;
         let total = price * this.state.quality
         return (
             <>
+                {console.log(this.props.router.params)}
                 <div className="topnav">
                     <Nav />
                 </div>
@@ -59,7 +56,7 @@ class ProductDetail extends React.Component {
                             }
                             <h2>Total: {total}</h2>
                         </div>
-                        <button className="add" disabled={status !== "10ACTIVE"} onClick={this.handleAddCart}>Add Cart</button><br />
+                        <button className="add" disabled={status !== "10ACTIVE"} onClick={() => this.handleAddCart}>Add Cart</button><br />
                         <button className="submit" disabled={status !== "10ACTIVE"}>Order</button>
                     </div>
 

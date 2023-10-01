@@ -36,7 +36,9 @@ const DropDownMenu = () => {
             <ul className="choise">
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/cart">Cart</a></li>
-                <li><a href="/" onClick={() => localStorage.removeItem('name')}>Sign Out</a></li>
+                <li><a href="/" onClick={() => {
+                    localStorage.removeItem('name')
+                }}>Sign Out</a></li>
             </ul>
         </div>
     )
