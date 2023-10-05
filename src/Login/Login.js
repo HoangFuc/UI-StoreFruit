@@ -4,11 +4,8 @@ import "./Login.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { toast } from "react-toastify";
-import { createStore } from 'redux';
-import reducer from '../store/reducers';
 
 
-const loginStore = createStore(reducer)
 class Login extends React.Component {
     state = {
         username: '',
@@ -33,8 +30,7 @@ class Login extends React.Component {
         })
             .then((data) => {
                 window.location.href = '/home';
-                localStorage.setItem('name', `${this.state.username}`)
-                localStorage.setItem('validate', false)
+                localStorage.setItem('name', `${this.state.username}`);
             }
             )
             .catch((err) => {
@@ -43,7 +39,6 @@ class Login extends React.Component {
     }
 
     render() {
-        const { validate } = this.props
         return (
             <>
                 {localStorage.removeItem('name')}

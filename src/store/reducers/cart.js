@@ -4,21 +4,20 @@ const initState = {
 
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 
-export const handleAddCart = () => ({
-    type: 'ADD_PRODUCT',
-    name: 'a',
+export const addProduct = (product) => ({
+    type: ADD_PRODUCT,
+    payload: product
 })
 
-const reducer = (state = initState, action) => {
+const cartReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_PRODUCT':
             return {
-                ...state,
-                items: [...state.items, action.name]
+                items: action.payload
             };
         default:
             return state;
     }
 };
 
-export default reducer;
+export default cartReducer;

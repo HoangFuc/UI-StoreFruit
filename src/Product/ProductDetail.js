@@ -3,7 +3,7 @@ import Nav from "../Nav/Nav";
 import '../Nav/Nav.scss'
 import './ProductDetail.scss'
 import withRouter from "../withRouter";
-import { ADD_PRODUCT } from "../store/reducers/cart";
+
 
 class ProductDetail extends React.Component {
     state = {
@@ -30,10 +30,12 @@ class ProductDetail extends React.Component {
 
     render() {
         const { name, price, status } = this.props.router.params;
+        const product = this.props.router.params;
         let total = price * this.state.quality
+        const check = this.props;
         return (
             <>
-                {console.log(this.props.router.params)}
+                {console.log('check', check)}
                 <div className="topnav">
                     <Nav />
                 </div>
@@ -56,7 +58,12 @@ class ProductDetail extends React.Component {
                             }
                             <h2>Total: {total}</h2>
                         </div>
-                        <button className="add" disabled={status !== "10ACTIVE"} onClick={() => this.handleAddCart}>Add Cart</button><br />
+                        <button className="add" disabled={status !== "10ACTIVE"} onClick={() => {
+                            localStorage.setItem('product', name);
+                            localStorage.setItem('quatity', this.state.quality);
+                            localStorage.setItem('total', total);
+                        }
+                        }>Add Cart</button><br />
                         <button className="submit" disabled={status !== "10ACTIVE"}>Order</button>
                     </div>
 
