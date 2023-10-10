@@ -6,24 +6,7 @@ class Cart extends React.Component {
         items: []
     }
 
-    componentDidMount = () => {
-        const cart = {
-            name: localStorage.getItem('product'),
-            quatity: localStorage.getItem('quatity'),
-            price: localStorage.getItem('total')
-        }
-        this.setState({
-            items: [
-                ...this.state.items, cart
-            ]
-        })
-    }
     render() {
-        const product = localStorage.getItem('product');
-        const quatity = localStorage.getItem('quatity');
-        const price = localStorage.getItem('total');
-
-
         return (
             <>
                 <div className="topnav">

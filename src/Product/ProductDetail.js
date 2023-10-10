@@ -3,6 +3,8 @@ import Nav from "../Nav/Nav";
 import '../Nav/Nav.scss'
 import './ProductDetail.scss'
 import withRouter from "../withRouter";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 
 class ProductDetail extends React.Component {
@@ -28,11 +30,28 @@ class ProductDetail extends React.Component {
         })
     }
 
+    handleAddCart = async () => {
+        await axios.post('http://localhost:3000/cart', {
+            name: this.props.router.params.name,
+            quantity: this.state.quality,
+            total: this.props.router.params.price * this.state.quality
+        })
+            .then((data) => {
+                console.log('name ', this.props.router.params.name);
+                console.log('quantity', this.state.quality);
+                console.log('total', this.props.router.params.price * this.state.quality);
+                toast.success("ADD PRODUCT SUCCESS !!!");
+            })
+            .catch((err) => {
+                toast.error('Sold out');
+            })
+    }
+
     render() {
-        const { name, price, status } = this.props.router.params;
-        const product = this.props.router.params;
+        const { name, price, status, code } = this.props.router.params;
         let total = price * this.state.quality
         const check = this.props;
+        const discount = 0;
         return (
             <>
                 {console.log('check', check)}
@@ -58,10 +77,27 @@ class ProductDetail extends React.Component {
                             }
                             <h2>Total: {total}</h2>
                         </div>
-                        <button className="add" disabled={status !== "10ACTIVE"} onClick={() => {
-                            localStorage.setItem('product', name);
-                            localStorage.setItem('quatity', this.state.quality);
-                            localStorage.setItem('total', total);
+                        <button className="add" type="POST" disabled={status !== "10ACTIVE"} onClick={async () => {
+                            await axios.post('http://localhost:3000/orders', {
+                                'products': [
+                                    {
+                                        'code': code,
+                                        'quantity': this.state.quality
+                                    }
+                                ],
+                                'discount': discount,
+                                'total': total,
+                                'total_paid': total - discount,
+                                'customer_id': 1
+                            })
+                                .then((data) => {
+                                    console.log(data);
+                                    toast.success('ADD CART SUCCESSFULLY');
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                    toast.error(err)
+                                })
                         }
                         }>Add Cart</button><br />
                         <button className="submit" disabled={status !== "10ACTIVE"}>Order</button>

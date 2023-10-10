@@ -18,11 +18,11 @@ class Nav extends React.Component {
                 <NavLink to="/home" activeClassName="active">Home</NavLink>
                 <NavLink to="/abc" activeClassName="active" >A</NavLink>
                 <NavLink to="/xys" activeClassName="active">B</NavLink>
-                <NavLink to="/z" activeClassName="active">C</NavLink>
                 <nav id="login">
                     <img src={require(`../assets/Phuc.jpg`)} alt="avatar" type="button" onClick={() => this.handleOpen()} />
                     {open && <DropDownMenu />}
                 </nav>
+                <NavLink to="/cart" activeClassName="active" style={{ float: "right" }}>Cart</NavLink>
             </>
         )
     }
