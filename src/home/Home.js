@@ -7,7 +7,7 @@ import ListProduct from "../ListProducts/ListProduct";
 class Home extends React.Component {
     state = {
         listProduct: [],
-        check: localStorage.getItem('name')
+        check: localStorage.getItem('name'),
     }
 
     async componentDidMount() {
@@ -17,10 +17,14 @@ class Home extends React.Component {
         })
     }
 
+
+
     render() {
+        const { customer } = this.state
         if (this.state.check !== null)
             return (
                 <>
+                    {console.log(customer)}
                     {sessionStorage.getItem
                         ?
                         <>

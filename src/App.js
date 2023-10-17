@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetail from './Product/ProductDetail';
 import Cart from './Cart/Cart';
+import OrderDetail from './Order-detail/Order-detail';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/home" Component={Home} exact></Route>
             <Route path='/productdetail/:id/:name/:price/:code/:status' Component={ProductDetail} />
             <Route path='/cart' Component={Cart} />
+            <Route path='/cart/order-details' Component={OrderDetail} />
             {/* <Route path='/profile' Component={Profile} /> */}
           </Routes>
           <ToastContainer

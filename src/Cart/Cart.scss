@@ -10,3 +10,24 @@ table {
         border: 2px solid gray;
     }
 }
+
+.footer {
+    margin-top: 20px;
+    font-size: 35px;
+
+    button {
+        float: right;
+        margin-right: 2em;
+        font-weight: bold;
+        width: 200px;
+        color: brown;
+    }
+
+    .total {
+        float: left;
+        margin-left: 8em;
+        border: 5px solid black;
+        font-weight: bold;
+        background-color: azure;
+    }
+}

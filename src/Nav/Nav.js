@@ -16,8 +16,6 @@ class Nav extends React.Component {
         return (
             <>
                 <NavLink to="/home" activeClassName="active">Home</NavLink>
-                <NavLink to="/abc" activeClassName="active" >A</NavLink>
-                <NavLink to="/xys" activeClassName="active">B</NavLink>
                 <nav id="login">
                     <img src={require(`../assets/Phuc.jpg`)} alt="avatar" type="button" onClick={() => this.handleOpen()} />
                     {open && <DropDownMenu />}

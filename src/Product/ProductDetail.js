@@ -30,23 +30,6 @@ class ProductDetail extends React.Component {
         })
     }
 
-    handleAddCart = async () => {
-        await axios.post('http://localhost:3000/cart', {
-            name: this.props.router.params.name,
-            quantity: this.state.quality,
-            total: this.props.router.params.price * this.state.quality
-        })
-            .then((data) => {
-                console.log('name ', this.props.router.params.name);
-                console.log('quantity', this.state.quality);
-                console.log('total', this.props.router.params.price * this.state.quality);
-                toast.success("ADD PRODUCT SUCCESS !!!");
-            })
-            .catch((err) => {
-                toast.error('Sold out');
-            })
-    }
-
     render() {
         const { name, price, status, code } = this.props.router.params;
         let total = price * this.state.quality
@@ -91,7 +74,6 @@ class ProductDetail extends React.Component {
                                 'customer_id': 1
                             })
                                 .then((data) => {
-                                    console.log(data);
                                     toast.success('ADD CART SUCCESSFULLY');
                                 })
                                 .catch((err) => {
