@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ProductDetail from './Product/ProductDetail';
 import Cart from './Cart/Cart';
 import OrderDetail from './Order-detail/Order-detail';
-
+import Profile from './Profile/Profile';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path='/productdetail/:id/:name/:price/:code/:status' Component={ProductDetail} />
             <Route path='/cart' Component={Cart} />
             <Route path='/cart/order-details' Component={OrderDetail} />
-            {/* <Route path='/profile' Component={Profile} /> */}
+            <Route path='/profile' Component={Profile} />
           </Routes>
           <ToastContainer
             position="top-right"

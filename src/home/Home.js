@@ -20,11 +20,9 @@ class Home extends React.Component {
 
 
     render() {
-        const { customer } = this.state
         if (this.state.check !== null)
             return (
                 <>
-                    {console.log(customer)}
                     {sessionStorage.getItem
                         ?
                         <>

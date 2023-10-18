@@ -30,7 +30,9 @@ class Login extends React.Component {
         })
             .then((data) => {
                 window.location.href = '/home';
+                // console.log(data)
                 localStorage.setItem('name', `${this.state.username}`);
+                localStorage.setItem('id', data.data.userProfile.customer_id)
             }
             )
             .catch((err) => {
