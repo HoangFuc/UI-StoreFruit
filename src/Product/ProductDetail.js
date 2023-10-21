@@ -35,6 +35,7 @@ class ProductDetail extends React.Component {
         let total = price * this.state.quality
         const check = this.props;
         const discount = 0;
+        const checkCustomer = Number(localStorage.getItem('id'));
         return (
             <>
                 {console.log('check', check)}
@@ -71,7 +72,7 @@ class ProductDetail extends React.Component {
                                 'discount': discount,
                                 'total': total,
                                 'total_paid': total - discount,
-                                'customer_id': 1
+                                'customer_id': checkCustomer
                             })
                                 .then((data) => {
                                     toast.success('ADD CART SUCCESSFULLY');

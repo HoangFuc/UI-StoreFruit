@@ -1,10 +1,25 @@
 .userProfile {
     display: block;
-    border: 3px solid whitesmoke;
-    width: 800px;
+    border: 3px solid brown;
+    width: 500px;
     height: 700px;
+    background-color: aquamarine;
 
-    span {
-        margin: 100px;
+    p {
+        float: left;
+        margin: 50px;
+        font-weight: bold;
+
+        span {
+            margin-left: 100px;
+        }
     }
+
+}
+
+.profileavatar {
+    clip-path: circle(100px at 50% 50%);
+    margin-top: 210px;
+    margin-left: 300px;
+
 }

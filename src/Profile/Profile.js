@@ -31,16 +31,16 @@ class Profile extends React.Component {
                     <div className="userProfile">
                         {
                             <>
-                                <span>{customer.full_name}</span><br />
-                                <span>{customer.birthday}</span><br />
-                                <span>{customer.address}</span><br />
-                                <span>{customer.email}</span><br />
-                                <span>{customer.phone}</span>
+                                <p>Full Name: <span>{customer.full_name}</span></p>
+                                <p>Birthday: <span>{customer.birthday}</span></p>
+                                <p>Address: <span>{customer.address}</span></p>
+                                <p>Email: <span>{customer.email}</span></p>
+                                <p>Phone: <span>{customer.phone}</span></p>
                             </>
                         }
                     </div>
                     <div className="picture">
-                        <img></img>
+                        <img className="profileavatar" src={require(`../assets/${localStorage.getItem('name')}.jpg`)} alt="avatar" type="button" />
                     </div>
                 </Container>
             </>

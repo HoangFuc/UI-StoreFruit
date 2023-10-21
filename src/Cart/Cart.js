@@ -5,12 +5,17 @@ import axios from "axios";
 import { toast } from "react-toastify";
 class Cart extends React.Component {
     state = {
-        items: []
+        items: [],
+        itemByCustomerId: []
     }
     componentDidMount = async () => {
+        const id = Number(localStorage.getItem('id'));
         const res = await axios.get('http://localhost:3000/orders');
         this.setState({
             items: res.data && res ? res.data : []
+        })
+        this.state.items.map((item, index) => {
+            if (item.customer_id === id) this.state.itemByCustomerId.push(item)
         })
     }
 
@@ -27,8 +32,9 @@ class Cart extends React.Component {
     }
 
     render() {
-        const { items } = this.state;
-        let total = 0
+        const { items, itemByCustomerId } = this.state;
+        const id = localStorage.getItem('id');
+        let total = 0;
         return (
             <>
                 <div className="topnav">
@@ -43,7 +49,7 @@ class Cart extends React.Component {
                             <th>Quatity</th>
                             <th>Price</th>
                         </tr>
-                        {items.length > 0 && items.map((item, index) => {
+                        {itemByCustomerId.length > 0 && itemByCustomerId.map((item, index) => {
                             return (
                                 <>
                                     <tr>
@@ -63,7 +69,7 @@ class Cart extends React.Component {
                 <div className="footer">
                     <div className="total">
                         Total: <span>
-                            {items.map((item, index) => {
+                            {itemByCustomerId.map((item, index) => {
                                 total = total + item.total;
                             })}
                             {total} VND

@@ -44,6 +44,7 @@ class Login extends React.Component {
         return (
             <>
                 {localStorage.removeItem('name')}
+                {localStorage.removeItem('id')}
                 <div className='login'>
                     <input type='text' placeholder='Nhap ten tai khoan' onChange={(event) => this.handleInputUserName(event)}></input> <br />
                     <input type='password' placeholder='Nhap mat khau' onChange={(event) => this.handleInputPassword(event)}></input> <br />
