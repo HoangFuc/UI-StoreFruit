@@ -29,10 +29,11 @@ class Login extends React.Component {
             password: this.state.password
         })
             .then((data) => {
-                window.location.href = '/home';
-                // console.log(data)
                 localStorage.setItem('name', `${this.state.username}`);
-                localStorage.setItem('id', data.data.userProfile.customer_id)
+                localStorage.setItem('id', `${data.data.userProfile.customer_id}`);
+                if (Number(data.data.userProfile.role) === 0) { window.location.href = '/home' }
+                else
+                    window.location.href = '/admin/customer';
             }
             )
             .catch((err) => {

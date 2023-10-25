@@ -8,6 +8,8 @@ import ProductDetail from './Product/ProductDetail';
 import Cart from './Cart/Cart';
 import OrderDetail from './Order-detail/Order-detail';
 import Profile from './Profile/Profile';
+import Customer from './Customer/Customer';
+import Account from './Account/Account';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path='/cart' Component={Cart} />
             <Route path='/cart/order-details' Component={OrderDetail} />
             <Route path='/profile' Component={Profile} />
+            <Route path='/admin/customer' Component={Customer} />
+            <Route path='/admin/account' Component={Account} />
           </Routes>
           <ToastContainer
             position="top-right"
