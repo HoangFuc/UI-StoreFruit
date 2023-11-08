@@ -41,7 +41,6 @@ class Account extends React.Component {
         await axios.post('http://localhost:3000/accounts', {
             username: this.state.username,
             password: this.state.password,
-            role: Number(this.state.role),
             customer_id: Number(this.state.customer_id)
         })
             .then((data) => {
@@ -143,21 +142,6 @@ class Account extends React.Component {
                                 onChange={(event) => {
                                     this.setState({
                                         customer_id: event.target.value
-                                    })
-                                }}
-                            />
-                        </InputGroup>
-
-                        <InputGroup className="mb-3">
-                            <InputGroup.Text id="inputGroup-sizing-default">
-                                Role
-                            </InputGroup.Text>
-                            <Form.Control
-                                aria-label="Default"
-                                aria-describedby="inputGroup-sizing-default"
-                                onChange={(event) => {
-                                    this.setState({
-                                        role: event.target.value
                                     })
                                 }}
                             />

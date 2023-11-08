@@ -11,9 +11,6 @@ class NavAdmin extends React.Component {
                 <Nav.Item>
                     <Nav.Link eventKey="link-1" href='/admin/account'>List Accounts</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2" href='/admin/product'>List Product</Nav.Link>
-                </Nav.Item>
             </Nav>
         )
     }
