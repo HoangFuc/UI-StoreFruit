@@ -31,6 +31,7 @@ class Login extends React.Component {
             .then((data) => {
                 localStorage.setItem('name', `${this.state.username}`);
                 localStorage.setItem('id', `${data.data.userProfile.customer_id}`);
+                localStorage.setItem('role', `${data.data.userProfile.role}`)
                 if (Number(data.data.userProfile.role) === 0) { window.location.href = '/home' }
                 else
                     window.location.href = '/admin/customer';

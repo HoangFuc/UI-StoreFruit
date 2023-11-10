@@ -83,7 +83,6 @@ class ProductDetail extends React.Component {
                                 })
                         }
                         }>Add Cart</button><br />
-                        <button className="submit" disabled={status !== "10ACTIVE"}>Order</button>
                     </div>
 
                 </div >

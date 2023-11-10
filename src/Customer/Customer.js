@@ -44,7 +44,6 @@ class Customer extends React.Component {
         await axios.post('http://localhost:3000/customers', {
             full_name: this.state.fullname,
             address: this.state.address,
-            birthday: this.state.birthday,
             phone: this.state.phone,
             email: this.state.email
         })
@@ -68,111 +67,118 @@ class Customer extends React.Component {
         const { customer, show } = this.state;
         return (
             <>
-                <NavAdmin />
-                <Button className="button-add" variant="primary" onClick={() => { this.handleShow() }}>Add Customer</Button>{' '}
-                <Table className="table-data" striped="columns">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Full Name</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {customer && customer.map((item, index) => {
-                            return (
+                {Number(localStorage.getItem('role')) === 1
+                    ?
+                    <>
+                        <NavAdmin />
+                        <Button className="button-add" variant="primary" onClick={() => { this.handleShow() }}>Add Customer</Button>{' '}
+                        <Table className="table-data" striped="columns">
+                            <thead>
                                 <tr>
-                                    <th>{item.id}</th>
-                                    <th>{item.full_name}</th>
-                                    <th>{item.address}</th>
-                                    <th>{item.email}</th>
-                                    <th>{item.phone}</th>
-                                    <CloseButton onClick={(id) => this.deleteCustomer(item.id)} />
+                                    <th>ID</th>
+                                    <th>Full Name</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
                                 </tr>
-                            )
-                        })}
-                    </tbody>
-                </Table>
-                <Modal
-                    show={show}
-                    onHide={() => this.handleClose()}
-                    backdrop="static"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Customer</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <InputGroup className="mb-3">
-                            <InputGroup.Text id="inputGroup-sizing-default">
-                                Full Name
-                            </InputGroup.Text>
-                            <Form.Control
-                                aria-label="Default"
-                                aria-describedby="inputGroup-sizing-default"
-                                onChange={(event) => {
-                                    this.setState({
-                                        fullname: event.target.value
-                                    })
-                                }}
-                            />
-                        </InputGroup>
+                            </thead>
+                            <tbody>
+                                {customer && customer.map((item, index) => {
+                                    return (
+                                        <tr>
+                                            <th>{item.id}</th>
+                                            <th>{item.full_name}</th>
+                                            <th>{item.address}</th>
+                                            <th>{item.email}</th>
+                                            <th>{item.phone}</th>
+                                            <CloseButton onClick={(id) => this.deleteCustomer(item.id)} />
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </Table>
+                        <Modal
+                            show={show}
+                            onHide={() => this.handleClose()}
+                            backdrop="static"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title>Add Customer</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text id="inputGroup-sizing-default">
+                                        Full Name
+                                    </InputGroup.Text>
+                                    <Form.Control
+                                        aria-label="Default"
+                                        aria-describedby="inputGroup-sizing-default"
+                                        onChange={(event) => {
+                                            this.setState({
+                                                fullname: event.target.value
+                                            })
+                                        }}
+                                    />
+                                </InputGroup>
 
-                        <InputGroup className="mb-3">
-                            <InputGroup.Text id="inputGroup-sizing-default">
-                                Address
-                            </InputGroup.Text>
-                            <Form.Control
-                                aria-label="Default"
-                                aria-describedby="inputGroup-sizing-default"
-                                onChange={(event) => {
-                                    this.setState({
-                                        address: event.target.value
-                                    })
-                                }}
-                            />
-                        </InputGroup>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text id="inputGroup-sizing-default">
+                                        Address
+                                    </InputGroup.Text>
+                                    <Form.Control
+                                        aria-label="Default"
+                                        aria-describedby="inputGroup-sizing-default"
+                                        onChange={(event) => {
+                                            this.setState({
+                                                address: event.target.value
+                                            })
+                                        }}
+                                    />
+                                </InputGroup>
 
-                        <InputGroup className="mb-3">
-                            <InputGroup.Text id="inputGroup-sizing-default">
-                                Email
-                            </InputGroup.Text>
-                            <Form.Control
-                                aria-label="Default"
-                                type="email"
-                                aria-describedby="inputGroup-sizing-default"
-                                onChange={(event) => {
-                                    this.setState({
-                                        email: event.target.value
-                                    })
-                                }}
-                            />
-                        </InputGroup>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text id="inputGroup-sizing-default">
+                                        Email
+                                    </InputGroup.Text>
+                                    <Form.Control
+                                        aria-label="Default"
+                                        type="email"
+                                        aria-describedby="inputGroup-sizing-default"
+                                        onChange={(event) => {
+                                            this.setState({
+                                                email: event.target.value
+                                            })
+                                        }}
+                                    />
+                                </InputGroup>
 
-                        <InputGroup className="mb-3">
-                            <InputGroup.Text id="inputGroup-sizing-default">
-                                Phone
-                            </InputGroup.Text>
-                            <Form.Control
-                                aria-label="Default"
-                                aria-describedby="inputGroup-sizing-default"
-                                onChange={(event) => {
-                                    this.setState({
-                                        phone: event.target.value
-                                    })
-                                }}
-                            />
-                        </InputGroup>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text id="inputGroup-sizing-default">
+                                        Phone
+                                    </InputGroup.Text>
+                                    <Form.Control
+                                        aria-label="Default"
+                                        aria-describedby="inputGroup-sizing-default"
+                                        onChange={(event) => {
+                                            this.setState({
+                                                phone: event.target.value
+                                            })
+                                        }}
+                                    />
+                                </InputGroup>
 
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.handleClose()}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={() => this.handleAddCustomer()}>Add</Button>
-                    </Modal.Footer>
-                </Modal >
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={() => this.handleClose()}>
+                                    Close
+                                </Button>
+                                <Button variant="primary" onClick={() => this.handleAddCustomer()}>Add</Button>
+                            </Modal.Footer>
+                        </Modal >
+                    </>
+                    :
+                    ''
+                }
             </>
         )
     }
